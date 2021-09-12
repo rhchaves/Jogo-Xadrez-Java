@@ -1,4 +1,4 @@
-package tabuleiro;
+package tabuleiro;//boardgame
 
 public class Posicao {
 
@@ -14,16 +14,8 @@ public class Posicao {
         return linha;
     }
 
-    public void setLinha(int linha) {
-        this.linha = linha;
-    }
-
     public int getColuna() {
         return coluna;
-    }
-
-    public void setColuna(int coluna) {
-        this.coluna = coluna;
     }
 
     @Override

@@ -1,8 +1,9 @@
 package tabuleiro;
 
-public class TabuleiroExecao extends RuntimeException {
+public class TabuleiroExcecao  extends RuntimeException{
+    private static final long serialVersionUID = 1L;
 
-    public TabuleiroExecao(String msg){
+    public TabuleiroExcecao(String msg){
         super(msg);
     }
 }

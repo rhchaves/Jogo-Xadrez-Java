@@ -1,9 +1,11 @@
 package xadrez;
 
-public class XadrezExecao extends RuntimeException{
-    private static final long serialVersaoUID = 1L;
+import tabuleiro.TabuleiroExcecao;
 
-    public XadrezExecao(String msg){
+public class XadrezExcecao extends TabuleiroExcecao {
+    private static final long serialVersionUID = 1L;
+
+    public XadrezExcecao(String msg){
         super(msg);
     }
 }

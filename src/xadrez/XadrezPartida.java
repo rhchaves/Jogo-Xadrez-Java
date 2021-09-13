@@ -31,8 +31,9 @@ public class XadrezPartida {//chessMath
         Posicao origem = origemPosicao.toPosicao();
         Posicao destino = destinoPosicao.toPosicao();
         validarPosicaoOrigem(origem);
-        Peca pecaCapiturada = fazerMovimento(origem, destino);
-        return (XadrezPeca)pecaCapiturada;
+        validarPosicaoDestino(origem,destino);
+        Peca pecaCapturada = fazerMovimento(origem, destino);
+        return (XadrezPeca)pecaCapturada;
     }
 
     private Peca fazerMovimento(Posicao origem, Posicao destino){
@@ -43,11 +44,16 @@ public class XadrezPartida {//chessMath
     }
 
     private void validarPosicaoOrigem(Posicao posicao){
-        if (!tabuleiro.pecaExistente(posicao)){
+        if (!tabuleiro.existePeca(posicao)){
             throw new XadrezExcecao("Não existe peça na posição de origem");
         }
         if (!tabuleiro.peca(posicao).exiteMovimentoPossivel()) {
             throw new XadrezExcecao("Não existe movimento possível para a peça escolhida");
+        }
+    }
+    private void validarPosicaoDestino(Posicao origem, Posicao destino){
+        if (!tabuleiro.peca(origem).movimentoPossivel(destino)){
+            throw new XadrezExcecao("A peça escolhida não pode ser movimentada para a posição de destino");
         }
     }
 

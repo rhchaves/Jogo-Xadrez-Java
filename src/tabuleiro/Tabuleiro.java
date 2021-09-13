@@ -39,7 +39,7 @@ public class Tabuleiro { //Board
     }
 
     public void pecaPosicao(Peca peca, Posicao posicao){//placePiece()
-        if (pecaExistente(posicao)){
+        if (existePeca(posicao)){
             throw new TabuleiroExcecao("Já existe uma peça na posição " + posicao);
         }
         pecas[posicao.getLinha()][posicao.getColuna()] = peca;
@@ -63,11 +63,11 @@ public class Tabuleiro { //Board
         return linha >= 0 && linha < linhas && coluna>= 0 & coluna < colunas;
     }
 
-    private boolean posicaoExitente(Posicao posicao){
+    public boolean posicaoExitente(Posicao posicao){
         return posicaoExistente(posicao.getLinha(), posicao.getColuna());
     }
 
-    public boolean pecaExistente(Posicao posicao){//thereIsAPiece
+    public boolean existePeca(Posicao posicao){//thereIsAPiece
         if (!posicaoExitente(posicao)){
             throw new TabuleiroExcecao("Não existe essa posição");
         }

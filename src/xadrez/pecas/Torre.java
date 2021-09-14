@@ -13,11 +13,7 @@ public class Torre extends XadrezPeca {
 
     @Override
     public String toString(){
-        if (Torre.super.getCor() == Cor.BRANCA) {
-            return "t";
-        }else {
-            return "T";
-        }
+        return "T";
     }
 
     @Override

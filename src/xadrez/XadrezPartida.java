@@ -7,8 +7,10 @@ import tabuleiro.Tabuleiro;
 import xadrez.pecas.Rei;
 import xadrez.pecas.Torre;
 
-public class XadrezPartida {//chessMath
+import java.awt.*;
 
+public class XadrezPartida {//chessMath
+    
     private Tabuleiro tabuleiro;
 
     public XadrezPartida(){
@@ -27,7 +29,13 @@ public class XadrezPartida {//chessMath
     return matriz;
     }
 
-    public XadrezPeca movimentoXadrezMover(XadrezPosicao origemPosicao, XadrezPosicao destinoPosicao){
+    public boolean[][] movimentosPossiveis(XadrezPosicao origemPosition){
+        Posicao posicao = origemPosition.toPosicao();
+        validarPosicaoOrigem(posicao);
+        return tabuleiro.peca(posicao).movimentosPossiveis();
+    }
+
+    public XadrezPeca executarMovimentoXadrez(XadrezPosicao origemPosicao, XadrezPosicao destinoPosicao){
         Posicao origem = origemPosicao.toPosicao();
         Posicao destino = destinoPosicao.toPosicao();
         validarPosicaoOrigem(origem);

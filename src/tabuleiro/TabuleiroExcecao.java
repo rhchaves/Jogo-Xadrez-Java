@@ -5,5 +5,6 @@ public class TabuleiroExcecao  extends RuntimeException{
 
     public TabuleiroExcecao(String msg){
         super(msg);
+        System.out.println("Pressioner ENTER para continuar...");
     }
 }

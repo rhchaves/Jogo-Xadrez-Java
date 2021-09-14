@@ -10,12 +10,24 @@ import xadrez.pecas.Torre;
 import java.awt.*;
 
 public class XadrezPartida {//chessMath
-    
+
+    private int turno;
+    private Cor jogadorAtual;
     private Tabuleiro tabuleiro;
 
     public XadrezPartida(){
         tabuleiro = new Tabuleiro(8, 8);
+        turno =1;
+        jogadorAtual = Cor.BRANCA;
         iniciarJogo();
+    }
+
+    public int getTurno() {
+        return turno;
+    }
+
+    public Cor getJogadorAtual(){
+        return jogadorAtual;
     }
 
     //Métodos
@@ -41,6 +53,7 @@ public class XadrezPartida {//chessMath
         validarPosicaoOrigem(origem);
         validarPosicaoDestino(origem,destino);
         Peca pecaCapturada = fazerMovimento(origem, destino);
+        proximoTurno();
         return (XadrezPeca)pecaCapturada;
     }
 
@@ -55,6 +68,9 @@ public class XadrezPartida {//chessMath
         if (!tabuleiro.existePeca(posicao)){
             throw new XadrezExcecao("Não existe peça na posição de origem");
         }
+        if (jogadorAtual != ((XadrezPeca)tabuleiro.peca(posicao)).getCor()){
+            throw new XadrezExcecao("Peça escolhida não é sua!");
+        }
         if (!tabuleiro.peca(posicao).exiteMovimentoPossivel()) {
             throw new XadrezExcecao("Não existe movimento possível para a peça escolhida");
         }
@@ -63,6 +79,11 @@ public class XadrezPartida {//chessMath
         if (!tabuleiro.peca(origem).movimentoPossivel(destino)){
             throw new XadrezExcecao("A peça escolhida não pode ser movimentada para a posição de destino");
         }
+    }
+
+    private void proximoTurno(){
+        turno++;
+        jogadorAtual = (jogadorAtual == Cor.BRANCA) ? Cor.PRETA : Cor.BRANCA;
     }
 
     private void colocarNovaPeca(char coluna, int linha, XadrezPeca peca){//placeNewPiece

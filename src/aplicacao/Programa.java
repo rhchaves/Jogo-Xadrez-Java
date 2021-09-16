@@ -18,7 +18,7 @@ public class Programa {
         XadrezPartida xadrezPartida = new XadrezPartida();
         List<XadrezPeca> capturada = new ArrayList<>();
 
-        while (true) {
+        while (!xadrezPartida.getCheckMate()) {
             try {
                 UI.limparTela();
                 UI.printPartida(xadrezPartida, capturada);
@@ -49,6 +49,8 @@ public class Programa {
                 sc.nextLine();
             }
         }
+        UI.limparTela();
+        UI.printPartida(xadrezPartida, capturada);// mostrar a partida finalizada
     }
 
 

@@ -1,6 +1,5 @@
 package aplicacao;
 
-import tabuleiro.Peca;
 import xadrez.XadrezExcecao;
 import xadrez.XadrezPartida;
 import xadrez.XadrezPeca;
@@ -38,6 +37,16 @@ public class Programa {
 
                 if (pecaCapiturada != null){
                     capturada.add(pecaCapiturada);
+                }
+
+                if (xadrezPartida.getPromocao() != null){
+                    System.out.println("Informe a peça para ser promovida (B/C/T/Q): ");
+                    String tipo = sc.nextLine().toUpperCase();
+                    while (!tipo.equals("B") && !tipo.equals("C") && !tipo.equals("T") && !tipo.equals("Q")){
+                        System.out.println("Valor inválido!!! \nInforme a peça para ser promovida (B/C/T/Q): ");
+                        tipo = sc.nextLine().toUpperCase();
+                    }
+                    xadrezPartida.trocarPecaPromovida(tipo);
                 }
             }
             catch (XadrezExcecao e){

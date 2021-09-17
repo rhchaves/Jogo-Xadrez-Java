@@ -29,6 +29,7 @@ public abstract class XadrezPeca extends Peca {
     public void subtraiContaMovimento(){
         contaMovimento--;
     }
+
     public XadrezPosicao getXadrezPosicao(){
         return XadrezPosicao.fromPosicao(posicao);
     }
